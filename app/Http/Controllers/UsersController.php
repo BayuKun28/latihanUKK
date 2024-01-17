@@ -16,7 +16,7 @@ class UsersController extends Controller
             'menu' => 'Manage Users',
             'submenu' => 'Data',
             'nama_user' => 'Example Nama',
-            'table' => DB::select('SELECT u.*,(CASE WHEN u.level = 1 THEN "Admin" ELSE "Kasir" END) as terbilanglevel  FROM users u ORDER BY u.id ASC'),
+            'table' => User::getData()
         ];
         return view('users.index', compact('data'));
     }
@@ -55,10 +55,7 @@ class UsersController extends Controller
             'menu' => 'Manage Users',
             'submenu' => 'Edit Users',
             'nama_user' => 'Example Nama',
-            'detail' =>  DB::table('users')
-                ->select('users.*', DB::raw('CASE WHEN users.level = 1 THEN "Admin" ELSE "Kasir" END as terbilanglevel'))
-                ->where('users.id', $id)
-                ->first(),
+            'detail' =>  User::getDetail($id)
         ];
         return view('users.v_edit', compact('data'));
     }
