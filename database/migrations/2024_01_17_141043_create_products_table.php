@@ -17,8 +17,8 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->integer('id_kategori');
             $table->integer('id_satuan');
-            $table->longText('kode_barang');
-            $table->string('nama_barang');
+            $table->longText('kode_produk');
+            $table->string('nama_produk');
             $table->double('harga_jual');
             $table->integer('stok');
             $table->timestamps();

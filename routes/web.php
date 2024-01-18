@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
@@ -44,4 +45,12 @@ Route::controller(SatuanController::class)->group(function () {
     Route::get('/v_edit_satuan/{id}', 'v_edit')->name('v_edit_satuan');
     Route::post('/edit_satuan', 'edit')->name('edit_satuan');
     Route::get('/deleteSatuan/{id}', 'delete')->name('deleteSatuan');
+});
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/product', 'index')->name('product');
+    Route::get('/v_tambah_product', 'v_tambah')->name('v_tambah_product');
+    Route::post('/tambah_product', 'tambah')->name('tambah_product');
+    Route::get('/v_edit_product/{id}', 'v_edit')->name('v_edit_product');
+    Route::post('/edit_product', 'edit')->name('edit_product');
+    Route::get('/deleteProduct/{id}', 'delete')->name('deleteProduct');
 });
